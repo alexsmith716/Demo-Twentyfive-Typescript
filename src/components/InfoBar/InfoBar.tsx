@@ -46,7 +46,7 @@ export const InfoBar: React.FC = () => {
 					{error && (
 						<>
 							<div>RENDERING ERROR</div>
-							<div>{`Message: ${errorResponse.message}`}</div>
+							<div>{`Message: ${errorResponse.error.message}`}</div>
 							<div>{`Url: ${errorResponse.documentation_url}`}</div>
 						</>
 					)}
@@ -56,11 +56,13 @@ export const InfoBar: React.FC = () => {
 						<Styles.InfoBarContainerStyled className="flex-column-center">
 							<div>
 								InfoBar message: &apos;
-								<Styles.DataMessage>{data ? data.message : 'no message!'}</Styles.DataMessage>
+								<Styles.DataMessage>
+									{data ? data.result.message : 'no message!'}
+								</Styles.DataMessage>
 								&apos;
 							</div>
-							<div>{data && new Date(data.time).toString()}</div>
-							<div>{data && data.timeElapsed}</div>
+							<div>{data && new Date(data.result.time).toString()}</div>
+							<div>{data && data.result.timeElapsed}</div>
 
 							<div className="mt-2">
 								<Button className="btn-primary" onClick={doLoadInfo}>
