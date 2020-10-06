@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkTest Link changes the class when hovered 1`] = `
+<div>
+  <div
+    class="bg-color-slategray"
+  >
+    <div
+      class="bg-color-ivory container-padding-border-radius-1 mb-5 text-break"
+    >
+      <h2>
+        LinkTest
+      </h2>
+      <div>
+        state variable "onMouseHoverStatus" state: 
+        normal
+      </div>
+      <div>
+        <a
+          class="normal"
+          data-testid="hover-anchorlink"
+          href="https:\\\\/\\\\/github.com"
+        >
+          Github
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LinkTest Link changes the class when hovered 2`] = `
+<div>
+  <div
+    class="bg-color-slategray"
+  >
+    <div
+      class="bg-color-ivory container-padding-border-radius-1 mb-5 text-break"
+    >
+      <h2>
+        LinkTest
+      </h2>
+      <div>
+        state variable "onMouseHoverStatus" state: 
+        hovered
+      </div>
+      <div>
+        <a
+          class="hovered"
+          data-testid="hover-anchorlink"
+          href="https:\\\\/\\\\/github.com"
+        >
+          Github
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`LinkTest Link changes the class when hovered 3`] = `
+<div>
+  <div
+    class="bg-color-slategray"
+  >
+    <div
+      class="bg-color-ivory container-padding-border-radius-1 mb-5 text-break"
+    >
+      <h2>
+        LinkTest
+      </h2>
+      <div>
+        state variable "onMouseHoverStatus" state: 
+        normal
+      </div>
+      <div>
+        <a
+          class="normal"
+          data-testid="hover-anchorlink"
+          href="https:\\\\/\\\\/github.com"
+        >
+          Github
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+`;

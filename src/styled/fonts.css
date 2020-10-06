@@ -1,0 +1,111 @@
+@font-face {
+	font-family: 'AllerBold';
+	src: url('../assets/fonts/aller-bold.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'LobsterV20LatinRegular';
+	src: url('../assets/fonts/lobster-v20-latin-regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MontserratLight';
+	src: url('../assets/fonts/MontserratLight.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Norwester';
+	src: url('../assets/fonts/norwester.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'OldEnglish';
+	src: url('../assets/fonts/old-english.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansBold';
+	src: url('../assets/fonts/OpenSans-Bold-webfont.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansItalic';
+	src: url('../assets/fonts/OpenSans-Italic-webfont.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'OpenSansLight';
+	src: url('../assets/fonts/OpenSans-Light-webfont.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'PhilosopherBold';
+	src: url('../assets/fonts/philosopher-bold-webfont.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'RobotoMonoV4LatinRegular';
+	src: url('../assets/fonts/roboto-mono-v4-latin-regular.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'RobotoV15LatinRegular';
+	src: url('../assets/fonts/roboto-v15-latin-regular.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'SourcesansproRegular';
+	src: url('../assets/fonts/sourcesanspro-regular-webfont.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'SourcesansproIt';
+	src: url('../assets/fonts/sourcesanspro-it-webfont.woff') format('woff');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'SpectralscCyrillic';
+	src: url('../assets/fonts/spectralsc-cyrillic.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'SpectralscLatin';
+	src: url('../assets/fonts/spectralsc-latin.woff2') format('woff2');
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: 'Zocial';
+	src: url('../assets/fonts/Zocial.ttf') format('ttf');
+	font-style: normal;
+	font-weight: normal;
+}
