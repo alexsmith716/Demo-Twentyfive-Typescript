@@ -2,15 +2,17 @@ const LOAD = 'redux-example/info/LOAD';
 const LOAD_SUCCESS = 'redux-example/info/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/info/LOAD_FAIL';
 
+export type Actions = { type: typeof LOAD } | { type: typeof LOAD_SUCCESS } | { type: typeof LOAD_FAIL };
+
 import { postRequestConcatExportASYNC } from '../../utils/mockAPI';
 
-//  export type State = {
-//  	loading: boolean;
-//  	loaded: boolean,
-//  	error: true | null;
-//  	errorResponse: any;
-//  	data: any;
-//  };
+export type State = {
+	loading: boolean;
+	loaded: boolean,
+	error: true | null;
+	errorResponse: any;
+	data: any;
+};
 
 export const initialState = {
 	loading: false,
@@ -20,7 +22,7 @@ export const initialState = {
 	data: null,
 };
 
-export const reducer = (state = initialState, action = {}) => {
+export const reducer = (state: State = initialState, action: Actions): State => {
 	switch (action.type) {
 
 		case LOAD:
@@ -38,7 +40,7 @@ export const reducer = (state = initialState, action = {}) => {
 				...state,
 				loading: false,
 				loaded: true,
-				data: action.result,
+				data: action,
 			};
 
 		case LOAD_FAIL:
@@ -50,7 +52,7 @@ export const reducer = (state = initialState, action = {}) => {
 				loaded: false,
 				// error: action.error,
 				error: true,
-				errorResponse: {message: action.error.message, documentation_url:''},
+				errorResponse: {message: action, documentation_url:''},
 			};
 
 		default:
@@ -58,22 +60,22 @@ export const reducer = (state = initialState, action = {}) => {
 	}
 };
 
-export function isLoaded(globalState) {
-  return globalState.info && globalState.info.loaded;
+export function isInfoLoaded(storeState: any) {
+	return storeState.info && storeState.info.loaded;
 };
 
 export function loadInfo() {
-  console.log('>>>>>>>>>>>>>>>> REDUX > INFO > loadInfo() +++++++++++++++++++++++++++');
-  let location = 'https://api.github.com/feeds';
-  // let location = 'https://www.metaweather.com/api/location/2459115/';
-  return {
-    types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-    promise: () => postRequestConcatExportASYNC('resolve', true, 550)
-      .then(
-        result => {
-          console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() > THEN > RESULT: ', result);
-          return result;
-        }, 
-      )
-  };
+	console.log('>>>>>>>>>>>>>>>> REDUX > INFO > loadInfo() +++++++++++++++++++++++++++');
+	let location = 'https://api.github.com/feeds';
+	// let location = 'https://www.metaweather.com/api/location/2459115/';
+	return {
+		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+		promise: () => postRequestConcatExportASYNC('resolve', true, 550)
+			.then(
+				result => {
+					console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() > THEN > RESULT: ', result);
+					return result;
+				}, 
+			)
+	};
 };

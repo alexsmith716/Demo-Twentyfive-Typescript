@@ -7,7 +7,7 @@ import About from './containers/About/Loadable';
 import GraphqlPage from './containers/GraphqlPage/Loadable';
 
 import { preloadData as preloadDataApp } from './containers/App/preloadData';
-import { preloadData as preloadDataAboutThree } from './containers/About/preloadData';
+// import { preloadData as preloadDataAboutThree } from './containers/About/preloadData';
 
 import './styled/fonts.css';
 //  import './theme/scss/global/styles.global.scss';
@@ -28,7 +28,7 @@ const routes = [{
 				path: '/about',
 				exact: true,
 				component: About,
-				loadData: preloadDataAboutThree,
+				// loadData: preloadDataAboutThree,
       }, {
         path: '/graphqlpage',
         exact: true,
