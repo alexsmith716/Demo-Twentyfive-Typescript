@@ -16,6 +16,7 @@
 		"lint:js": "eslint src/components/**/*.{js,ts,tsx}",
 		"lint:App": "eslint ./src/containers/App/App.tsx",
 		"lint:LinkTest": "eslint ./src/components/jestTest/LinkTest.tsx",
+    "lint:infoAlertThree": "eslint ./src/redux/modules/infoAlertThree.ts",
 		"format": "prettier --config .prettierrc --write ./bin/start.js"
 	},
 	"dependencies": {

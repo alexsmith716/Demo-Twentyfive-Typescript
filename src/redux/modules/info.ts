@@ -1,14 +1,14 @@
+import { postRequestConcatExportASYNC } from '../../utils/mockAPI';
+
 const LOAD = 'redux-example/info/LOAD';
 const LOAD_SUCCESS = 'redux-example/info/LOAD_SUCCESS';
 const LOAD_FAIL = 'redux-example/info/LOAD_FAIL';
 
 export type Actions = { type: typeof LOAD } | { type: typeof LOAD_SUCCESS } | { type: typeof LOAD_FAIL };
 
-import { postRequestConcatExportASYNC } from '../../utils/mockAPI';
-
 export type State = {
 	loading: boolean;
-	loaded: boolean,
+	loaded: boolean;
 	error: true | null;
 	errorResponse: any;
 	data: any;
@@ -24,7 +24,6 @@ export const initialState = {
 
 export const reducer = (state: State = initialState, action: Actions): State => {
 	switch (action.type) {
-
 		case LOAD:
 			console.log('>>>>>>>>>>>>>>>> INFO > LOAD > REDUCER > state: ', state);
 			console.log('>>>>>>>>>>>>>>>> INFO > LOAD > REDUCER > action: ', action);
@@ -52,7 +51,7 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 				loaded: false,
 				// error: action.error,
 				error: true,
-				errorResponse: {message: action, documentation_url:''},
+				errorResponse: { message: action, documentation_url: '' },
 			};
 
 		default:
@@ -60,22 +59,20 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 	}
 };
 
-export function isInfoLoaded(storeState: any) {
+export function isInfoLoaded(storeState: any): any {
 	return storeState.info && storeState.info.loaded;
-};
+}
 
-export function loadInfo() {
+export function loadInfo(): any {
 	console.log('>>>>>>>>>>>>>>>> REDUX > INFO > loadInfo() +++++++++++++++++++++++++++');
-	let location = 'https://api.github.com/feeds';
+	// let location = 'https://api.github.com/feeds';
 	// let location = 'https://www.metaweather.com/api/location/2459115/';
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
-		promise: () => postRequestConcatExportASYNC('resolve', true, 550)
-			.then(
-				result => {
-					console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() > THEN > RESULT: ', result);
-					return result;
-				}, 
-			)
+		promise: () =>
+			postRequestConcatExportASYNC('resolve', true, 550).then((result) => {
+				console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() > THEN > RESULT: ', result);
+				return result;
+			}),
 	};
-};
+}
