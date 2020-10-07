@@ -3,9 +3,8 @@ const TOGGLE_THEME_DARK = 'redux-example/toggleTheme/TOGGLE_THEME_DARK';
 
 import { AppTheme } from '../../styled';
 
-
 const initialState = {
-	theme: AppTheme.theme.defaultTheme
+	theme: AppTheme.theme.default
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -16,12 +15,12 @@ export default function reducer(state = initialState, action = {}) {
 
 		case TOGGLE_THEME_DEFAULT:
 			return {
-				theme: AppTheme.theme.defaultTheme
+				theme: AppTheme.theme.default
 			};
 
 		case TOGGLE_THEME_DARK:
 			return {
-				theme: AppTheme.theme.darkTheme
+				theme: AppTheme.theme.dark
 			};
 
 		default:
