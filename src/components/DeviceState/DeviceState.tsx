@@ -4,7 +4,7 @@ import { State as DeviceStateState } from '../../redux/modules/device';
 import * as Styles from './styles';
 
 export type State = {
-	online: any;
+	online: boolean;
 	device: DeviceStateState;
 };
 
@@ -12,10 +12,6 @@ export const DeviceState: React.FC = () => {
 	const online = useSelector((state: State) => state.online);
 	const userAgent = useSelector((state: State) => state.device.userAgent);
 	const isBot = useSelector((state: State) => state.device.isBot);
-
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> DeviceState > online    ????: ', online);
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> DeviceState > userAgent ????: ', userAgent);
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> DeviceState > isBot     ????: ', isBot);
 
 	return (
 		<div className="container">

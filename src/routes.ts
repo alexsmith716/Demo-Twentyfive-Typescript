@@ -12,32 +12,40 @@ import { preloadData as preloadDataAboutThree } from './containers/About/preload
 import './styled/fonts.css';
 //  import './theme/scss/global/styles.global.scss';
 
-const routes = [{
-	component: Root,
-	path: '/',
-	routes: [
-		{
-			path: '/',
-			component: App,
-			loadData: preloadDataApp,
-			routes: [{
+const routes = [
+	{
+		component: Root,
+		path: '/',
+		routes: [
+			{
 				path: '/',
-				exact: true,
-				component: Home,
-			}, {
-				path: '/about',
-				exact: true,
-				component: About,
-				loadData: preloadDataAboutThree,
-			}, {
-				path: '/graphqlpage',
-				exact: true,
-				component: GraphqlPage,
-			}, {
-				path: '*',
-				component: NotFound,
-			}]
-		}]
-}];
+				component: App,
+				loadData: preloadDataApp,
+				routes: [
+					{
+						path: '/',
+						exact: true,
+						component: Home,
+					},
+					{
+						path: '/about',
+						exact: true,
+						component: About,
+						loadData: preloadDataAboutThree,
+					},
+					{
+						path: '/graphqlpage',
+						exact: true,
+						component: GraphqlPage,
+					},
+					{
+						path: '*',
+						component: NotFound,
+					},
+				],
+			},
+		],
+	},
+];
 
 export default routes;
