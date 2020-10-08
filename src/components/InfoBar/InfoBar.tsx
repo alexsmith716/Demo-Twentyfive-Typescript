@@ -18,11 +18,6 @@ export const InfoBar: React.FC = () => {
 	const errorResponse = useSelector((state: State) => state.info.errorResponse);
 	const data = useSelector((state: State) => state.info.data);
 
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> InfoBar > data					????: ', data);
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> InfoBar > loading				????: ', loading);
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> InfoBar > error					????: ', error);
-	console.log('>>>>>>>>>>>>>>>>>>>>>>>> InfoBar > errorResponse	????: ', errorResponse);
-
 	const doLoadInfo = async () => {
 		try {
 			await dispatch(loadInfo());
