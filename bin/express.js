@@ -1,17 +1,14 @@
 const path = require('path');
 const express = require('express');
 const compression = require('compression');
+//  const httpProxy = require('http-proxy');
 const http = require('http');
 const morgan = require('morgan');
-// const bodyParser = require('body-parser');
+//  const bodyParser = require('body-parser');
 const webpack = require('webpack');
 const { getUserAgent } = require('../src/utils/device');
 const { isBot } = require('../src/utils/device');
 const logger = require('../src/utils/logger');
-
-//	const { apolloServer } = require('../src/apolloServer');
-
-//	const device = require('../src/utils/device'); // getUserAgent isBot
 
 /* eslint-disable global-require */
 
@@ -38,13 +35,19 @@ process.on('rejectionHandled', (promise) => {
 	unhandledRejections.delete(promise);
 });
 
+//	const targetUrl = process.env.API_HOST || 'http://localhost:8080';
 const app = express();
 const server = http.createServer(app);
 
+//  const proxy = httpProxy.createProxyServer({
+//  	target: targetUrl,
+//  	changeOrigin: true,
+//  });
+
 app.set('port', port);
 app.use(morgan('dev'));
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+//  app.use(bodyParser.json());
+//  app.use(bodyParser.urlencoded({ extended: true }));
 app.use(compression());
 
 app.use((req, res, next) => {
@@ -53,10 +56,6 @@ app.use((req, res, next) => {
 	logger.log(`>>>>>>>>>>>>>>>>> START > REQ.method +++++++++++++++: ${req.method}`);
 	logger.log(`>>>>>>>>>>>>>>>>> START > REQ.url ++++++++++++++++++: ${req.url}`);
 	logger.log(`>>>>>>>>>>>>>>>>> START > REQ.path ++++++++++++++++++: ${req.path}`);
-	// logger.log(`>>>>>>>>>>>>>>>>> START > REQ.headers ++++++++++++++: ${req.headers}`);
-	// logger.log(`>>>>>>>>>>>>>>>>> START > REQ.cookies ++++++++++++++: ${req.cookies}`);
-	// logger.log(`>>>>>>>>>>>>>>>>> START > REQ.session ++++++++: ${req.session}`);
-	// logger.log(`>>>>>>>>>>>>>>>>> START > REQ.params +++++++++: ${req.params}`);
 	logger.log(`>>>>>>>>>>>>>>>>> START > REQ.originalUrl ++++: ${req.originalUrl}`);
 	logger.log(`>>>>>>>>>>>>>>>>> START > REQUEST OUT <<<<<<<<<<<<<<<<<<<<<<<`);
 	next();
@@ -70,13 +69,27 @@ app.use((req, res, next) => {
 	next();
 });
 
+//	app.use((req, res, next) => {
+//		res.setHeader('X-Forwarded-For', req.ip);
+//		return next();
+//	});
+//	
+//	app.use('/api', (req, res) => {
+//		console.log('>>>> BIN > START > PROXY TO API SERVER');
+//		proxy.web(req, res, { target: targetUrl });
+//	});
+//	
+//	app.use('/graphql', (req, res) => {
+//		console.log('>>>> BIN > START > PROXY TO GRAPHQL SERVER');
+//		proxy.web(req, res, { target: targetUrl });
+//	});
+
 // ---------------------------------------------------------------------
 
 let isBuilt = false;
 
 const done = () => {
 	if (!isBuilt) {
-		//apolloServer(app);
 		server.listen(port, host, (err) => {
 			isBuilt = true;
 			logger.end('>>>> BIN > START > STATS COMPILER HAS COMPLETED BUILD !! WAIT IS OVER !');

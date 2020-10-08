@@ -24,7 +24,6 @@ import { RouterTrigger } from './components/RouterTrigger/RouterTrigger';
 import ScrollToTop from './components/ScrollToTop';
 
 import routes from './routes';
-import apiClient from './helpers/apiClient';
 import configureStore from './redux/configureStore';
 import isOnline from './utils/isOnline';
 import './utils/navbarDOMCollapse';
@@ -51,12 +50,6 @@ spinnerContainer.classList.add('spinner-progress');
 const dest = document.getElementById('react-root');
 document.body.insertBefore(spinnerContainer, dest);
 
-const client = apiClient();
-
-const providers = {
-	client,
-};
-
 // =====================================================
 
 (async () => {
@@ -76,7 +69,6 @@ const providers = {
 			...window.REDUX_DATA,
 			online,
 		},
-		helpers: providers,
 		persistConfig,
 	});
 
@@ -134,7 +126,7 @@ const providers = {
 	const hydrate = (hydrateRoutes) => {
 		const element = (
 			<HelmetProvider>
-				<Provider store={store} {...providers}>
+				<Provider store={store}>
 					<Router history={history}>
 						<ThemeContext>
 							<ScrollToTop />
