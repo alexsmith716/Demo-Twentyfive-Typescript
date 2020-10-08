@@ -1,17 +1,17 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { State as DeviceStateState } from '../../redux/modules/device';
 import * as Styles from './styles';
 
-export type DeviceStateState = {
+export type State = {
 	online: any;
-	userAgent: any;
-	isBot: any;
+	device: DeviceStateState;
 };
 
 export const DeviceState: React.FC = () => {
-	const online = useSelector((state: DeviceStateState) => state.online);
-	const userAgent = useSelector((state: DeviceStateState) => state.userAgent);
-	const isBot = useSelector((state: DeviceStateState) => state.isBot);
+	const online = useSelector((state: State) => state.online);
+	const userAgent = useSelector((state: State) => state.device.userAgent);
+	const isBot = useSelector((state: State) => state.device.isBot);
 
 	console.log('>>>>>>>>>>>>>>>>>>>>>>>> DeviceState > online    ????: ', online);
 	console.log('>>>>>>>>>>>>>>>>>>>>>>>> DeviceState > userAgent ????: ', userAgent);

@@ -1,17 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadInfo } from '../../redux/modules/info';
+import { State as InfoState } from '../../redux/modules/info';
 import { Loading } from '../Loading';
 import { Button } from '../Button';
 import * as Styles from './styles';
 
 export type State = {
-	info: {
-		loading: boolean;
-		error: Error | null;
-		errorResponse: any;
-		data: any;
-	};
+	info: InfoState;
 };
 
 export const InfoBar: React.FC = () => {

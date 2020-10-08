@@ -15,8 +15,8 @@
 		"lint:styles": "stylelint src/components/**/*.{css,scss,js,tsx}",
 		"lint:js": "eslint src/components/**/*.{js,ts,tsx}",
 		"lint:App": "eslint ./src/containers/App/App.tsx",
-		"lint:LinkTest": "eslint ./src/components/jestTest/LinkTest.tsx",
-    "lint:infoAlertThree": "eslint ./src/redux/modules/infoAlertThree.ts",
+		"lint:DeviceState": "eslint ./src/components/DeviceState/DeviceState.tsx",
+		"lint:theme": "eslint ./src/redux/modules/theme.ts",
 		"format": "prettier --config .prettierrc --write ./bin/start.js"
 	},
 	"dependencies": {
@@ -30,6 +30,7 @@
 		"graphiql": "^1.0.5",
 		"graphql": "^15.3.0",
 		"history": "^4.10.1",
+		"http-proxy": "^1.18.1",
 		"isomorphic-unfetch": "^3.1.0",
 		"localforage": "^1.9.0",
 		"node-fetch": "3.0.0-beta.9",

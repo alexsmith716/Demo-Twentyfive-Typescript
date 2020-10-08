@@ -1,11 +1,22 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { toggleTheme } from '../../redux/modules/theme';
+import { State as ThemeState } from '../../redux/modules/theme';
+
 import { useLocation } from 'react-router-dom';
 import { NavLinks } from './NavLinks';
 import * as Styles from './styles';
 
 import { useTheme } from '../../styled/ThemeContext';
 
+export type State = {
+	theme: ThemeState;
+};
+
 export const NavBar: React.FC = () => {
+	const dispatch = useDispatch();
+	const toggledTheme = useSelector((state: State) => state.theme.mode);
+
 	const themeMode = useTheme();
 	const location = useLocation();
 
@@ -24,6 +35,11 @@ export const NavBar: React.FC = () => {
 
 	const doThemeToggle = () => {
 		themeMode.toggleTheme();
+		setClicked(false);
+	};
+
+	const doThemeToggleXX = () => {
+		dispatch(toggleTheme(toggledTheme));
 		setClicked(false);
 	};
 
@@ -47,6 +63,11 @@ export const NavBar: React.FC = () => {
 
 					<Styles.Collapse>
 						<Styles.NavBarNav clicked={clicked} className={clicked ? 'clicked' : ''}>
+							<li>
+								<Styles.NavBarNavA className="js-scroll-trigger" onClick={doThemeToggleXX}>
+									xxxxxxxxxxxxx
+								</Styles.NavBarNavA>
+							</li>
 							<li>
 								<Styles.NavBarNavA className="js-scroll-trigger" onClick={doThemeToggle}>
 									use {themeMode.mode === 'dark' ? `default` : `dark`} theme
