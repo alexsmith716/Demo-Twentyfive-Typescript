@@ -16,7 +16,7 @@
 		"lint:js": "eslint src/components/**/*.{js,ts,tsx}",
 		"lint:App": "eslint ./src/containers/App/App.tsx",
 		"lint:NavBar": "eslint ./src/components/NavBar/NavBar.tsx",
-		"lint:theme": "eslint ./src/redux/modules/theme.ts",
+		"lint:initialpreloadedstate": "eslint ./src/redux/initial-preloaded-state.ts",
     "lint:ThemeContext": "eslint ./src/styled/ThemeContext.tsx",
 		"format": "prettier --config .prettierrc --write ./bin/start.js"
 	},
