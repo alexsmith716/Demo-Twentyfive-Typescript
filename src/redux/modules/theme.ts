@@ -4,7 +4,7 @@ const THEME_DARK = 'redux-example/theme/THEME_DARK';
 export type Actions = { type: typeof THEME_DEFAULT } | { type: typeof THEME_DARK };
 
 export type State = {
-	mode: any;
+	mode: string;
 };
 
 export const initialState = {
@@ -28,7 +28,7 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 	}
 };
 
-export function toggleTheme(themeMode: any): any {
+export function toggleTheme(themeMode: string): any {
 	const t = themeMode === 'default' ? THEME_DARK : THEME_DEFAULT;
 	return {
 		type: t,
