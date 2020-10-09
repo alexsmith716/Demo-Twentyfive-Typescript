@@ -1,6 +1,6 @@
 export type State = {
-	userAgent: any;
-	isBot: any;
+	userAgent?: string | null;
+	isBot?: string | null;
 };
 
 export const initialState = {
