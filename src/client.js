@@ -24,7 +24,7 @@ import { RouterTrigger } from './components/RouterTrigger/RouterTrigger';
 import ScrollToTop from './components/ScrollToTop';
 
 import routes from './routes';
-import apiClient from './helpers/apiClient';
+import { apiClient } from './helpers/apiClient';
 import configureStore from './redux/configureStore';
 import isOnline from './utils/isOnline';
 import './utils/navbarDOMCollapse';

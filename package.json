@@ -18,8 +18,8 @@
 		"lint:NavBar": "eslint ./src/components/NavBar/NavBar.tsx",
     "lint:info": "eslint ./src/redux/modules/info.ts",
     "lint:theme": "eslint ./src/redux/modules/theme.ts",
-		"lint:configureStore": "eslint ./src/redux/configureStore.ts",
-    "lint:ThemeContext": "eslint ./src/styled/ThemeContext.tsx",
+		"lint:clientMiddleware": "eslint ./src/redux/clientMiddleware.ts",
+    "lint:apiClient": "eslint ./src/helpers/apiClient.ts",
 		"format": "prettier --config .prettierrc --write ./bin/start.js"
 	},
 	"dependencies": {

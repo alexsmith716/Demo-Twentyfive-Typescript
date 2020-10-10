@@ -22,6 +22,16 @@ export const initialState = {
 	data: null,
 };
 
+export type LoadApiClientActions = {
+	types: string[];
+	promise: ({ client }: any) => any;
+};
+
+export type LoadActions = {
+	types: string[];
+	promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
+};
+
 export const reducer = (state: State = initialState, action: Actions): State => {
 	switch (action.type) {
 		case LOAD:
@@ -63,7 +73,7 @@ export function isInfoLoaded(storeState: State): boolean {
 	return storeState && storeState.loaded;
 }
 
-export function loadInfoApiClient(): any {
+export function loadInfoApiClient(): LoadApiClientActions {
 	console.log('>>>>>>>>>>>>>>>> INFO > loadInfoApiClient() +++++++++++++++++++++++++++');
 	const location = 'https://api.github.com/feeds';
 	// const location = 'https://www.metaweather.com/api/location/2459115/';
@@ -73,7 +83,7 @@ export function loadInfoApiClient(): any {
 	};
 }
 
-export function loadInfo(): any {
+export function loadInfo(): LoadActions {
 	console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() +++++++++++++++++++++++++++');
 	// const location = 'https://api.github.com/feeds';
 	// const location = 'https://www.metaweather.com/api/location/2459115/';
