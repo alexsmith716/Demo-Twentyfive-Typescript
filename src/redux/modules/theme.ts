@@ -28,7 +28,7 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 	}
 };
 
-export function toggleTheme(themeMode: string): any {
+export function toggleTheme(themeMode: string): Actions {
 	const t = themeMode === 'default' ? THEME_DARK : THEME_DEFAULT;
 	return {
 		type: t,

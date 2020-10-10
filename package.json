@@ -16,7 +16,9 @@
 		"lint:js": "eslint src/components/**/*.{js,ts,tsx}",
 		"lint:App": "eslint ./src/containers/App/App.tsx",
 		"lint:NavBar": "eslint ./src/components/NavBar/NavBar.tsx",
-		"lint:theme": "eslint ./src/redux/modules/theme.ts",
+    "lint:info": "eslint ./src/redux/modules/info.ts",
+    "lint:theme": "eslint ./src/redux/modules/theme.ts",
+		"lint:configureStore": "eslint ./src/redux/configureStore.ts",
     "lint:ThemeContext": "eslint ./src/styled/ThemeContext.tsx",
 		"format": "prettier --config .prettierrc --write ./bin/start.js"
 	},

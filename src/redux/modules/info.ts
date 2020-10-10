@@ -59,14 +59,24 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 	}
 };
 
-export function isInfoLoaded(storeState: any): any {
-	return storeState.info && storeState.info.loaded;
+export function isInfoLoaded(storeState: State): boolean {
+	return storeState && storeState.loaded;
+}
+
+export function loadInfoApiClient(): any {
+	console.log('>>>>>>>>>>>>>>>> INFO > loadInfoApiClient() +++++++++++++++++++++++++++');
+	const location = 'https://api.github.com/feeds';
+	// const location = 'https://www.metaweather.com/api/location/2459115/';
+	return {
+		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
+		promise: ({ client }: any) => client.get(location),
+	};
 }
 
 export function loadInfo(): any {
-	console.log('>>>>>>>>>>>>>>>> REDUX > INFO > loadInfo() +++++++++++++++++++++++++++');
-	// let location = 'https://api.github.com/feeds';
-	// let location = 'https://www.metaweather.com/api/location/2459115/';
+	console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() +++++++++++++++++++++++++++');
+	// const location = 'https://api.github.com/feeds';
+	// const location = 'https://www.metaweather.com/api/location/2459115/';
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
 		promise: () =>
