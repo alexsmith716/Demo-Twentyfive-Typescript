@@ -59,14 +59,14 @@ export const reducer = (state: State = initialState, action: Actions): State => 
 	}
 };
 
-export function isInfoAlertThreeLoaded(storeState: any): any {
-	return storeState.infoAlertThree && storeState.infoAlertThree.loaded;
+export function isInfoAlertThreeLoaded(storeState: State): any {
+	return storeState && storeState.loaded;
 }
 
 export function loadInfoAlertThree(): any {
 	console.log('>>>>>>>>>>>>>>>> INFOALERTTHREE > load() +++++++++++++++++++++++++++');
-	// let location = 'https://api.github.com/feeds';
-	// let location = 'https://www.metaweather.com/api/location/2459115/';
+	// const location = 'https://api.github.com/feeds';
+	// const location = 'https://www.metaweather.com/api/location/2459115/';
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
 		promise: () =>

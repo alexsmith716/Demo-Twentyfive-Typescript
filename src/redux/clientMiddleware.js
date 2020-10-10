@@ -3,10 +3,11 @@ export default function clientMiddleware(helpers) {
 	return ({ dispatch, getState }) => next => action => {
 
 		if (typeof action === 'function') {
-			// console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > RETURNING typeof action === function: ', typeof action);
+			console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > RETURNING typeof action === function: ', typeof action);
 			return action(dispatch, getState);
 		}
 
+		// allow the action creators access to the client API facade
 		const { promise, types, ...rest } = action;
 		
 		if (!promise) {
@@ -15,12 +16,13 @@ export default function clientMiddleware(helpers) {
 			//   "option": "https://api.github.com/emojis",
 			//   "meta": {"__multireducerKey": "AboutOneMultireducerFilterableTable1"}
 			// }
-			// console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > NO promise: ', action);
+			console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > NO promise: ', action);
 			return next(action);
 		} else {
-			// console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > YES promise: ', action);
+			console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > YES promise: ', action);
 		}
 
+		// allow some (async) actions to pass a "promise generator"
 		const [REQUEST, SUCCESS, FAILURE] = types;
 
 		next({ ...rest, type: REQUEST });
@@ -34,7 +36,8 @@ export default function clientMiddleware(helpers) {
 				next({ ...rest, error, type: FAILURE });
 			});
 
-		// console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > actionPromise: ', actionPromise);
+		console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > actionPromise: ', actionPromise);
+		// returning "Promise"
 		return actionPromise;
 	};
 }

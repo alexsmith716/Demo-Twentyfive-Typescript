@@ -22,6 +22,7 @@ import initialStatePreloaded from './redux/initial-preloaded-state';
 import { getUserAgent, isBot } from './utils/device';
 
 import Html from './helpers/Html';
+import apiClient from './helpers/apiClient';
 
 import defineHeaders from './utils/defineHeaders';
 
@@ -95,9 +96,14 @@ export default ({ clientStats }) => async (req, res) => {
 
 	const preloadedState = initialStatePreloaded(req);
 
+	const providers = {
+		client: apiClient(req),
+	};
+
 	const store = configureStore({
 		history,
 		data: { ...preloadedState, },
+		helpers: providers,
 	});
 
 	store.subscribe(() =>

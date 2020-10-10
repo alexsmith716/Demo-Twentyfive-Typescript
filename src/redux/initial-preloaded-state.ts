@@ -2,7 +2,7 @@ import { Request } from 'express';
 import { State as DeviceState } from './modules/device';
 
 type Props = {
-	device: DeviceState;
+	device?: DeviceState;
 	counterPreloaded: number;
 };
 
