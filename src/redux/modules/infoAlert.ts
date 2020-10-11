@@ -22,6 +22,11 @@ export const initialState = {
 	data: null,
 };
 
+export type LoadActions = {
+  types: string[];
+  promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
+};
+
 export const reducer = (state: State = initialState, action: Actions): State => {
 	switch (action.type) {
 		case LOAD:
@@ -63,7 +68,7 @@ export function isInfoAlertLoaded(storeState: State): boolean {
 	return storeState && storeState.loaded;
 }
 
-export function loadInfoAlert(): any {
+export function loadInfoAlert(): LoadActions {
 	console.log('>>>>>>>>>>>>>>>> INFOALERT > load() +++++++++++++++++++++++++++');
 	// const location = 'https://api.github.com/feeds';
 	// const location = 'https://www.metaweather.com/api/location/2459115/';

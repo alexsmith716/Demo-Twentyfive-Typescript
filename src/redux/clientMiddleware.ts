@@ -1,15 +1,18 @@
-export default function clientMiddleware(helpers) {
+import { Middleware, Dispatch } from 'redux';
 
-	return ({ dispatch, getState }) => next => action => {
-
+export default function clientMiddleware(helpers: any): Middleware {
+	return ({ dispatch, getState }) => (next: Dispatch) => (action) => {
 		if (typeof action === 'function') {
-			console.log('>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > RETURNING typeof action === function: ', typeof action);
+			console.log(
+				'>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > RETURNING typeof action === function: ',
+				typeof action
+			);
 			return action(dispatch, getState);
 		}
 
 		// allow the action creators access to the client API facade
 		const { promise, types, ...rest } = action;
-		
+
 		if (!promise) {
 			// {
 			//   "type": "redux-example/filterableTable/SELECTED_OPTION",
@@ -30,8 +33,11 @@ export default function clientMiddleware(helpers) {
 		const actionPromise = promise(helpers, dispatch);
 
 		actionPromise
-			.then( result => next({ ...rest, result, type: SUCCESS }), error => next({ ...rest, error, type: FAILURE }) )
-			.catch(error => {
+			.then(
+				(result) => next({ ...rest, result, type: SUCCESS }),
+				(error) => next({ ...rest, error, type: FAILURE })
+			)
+			.catch((error) => {
 				console.error('MIDDLEWARE ERROR:', error);
 				next({ ...rest, error, type: FAILURE });
 			});

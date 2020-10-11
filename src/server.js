@@ -22,7 +22,7 @@ import initialStatePreloaded from './redux/initial-preloaded-state';
 import { getUserAgent, isBot } from './utils/device';
 
 import Html from './helpers/Html';
-import apiClient from './helpers/apiClient';
+import { apiClient } from './helpers/apiClient';
 
 import defineHeaders from './utils/defineHeaders';
 
