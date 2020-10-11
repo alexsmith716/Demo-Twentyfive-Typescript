@@ -22,12 +22,12 @@ export const initialState = {
 	data: null,
 };
 
-export type LoadApiClientActions = {
+type LoadApiClientActions = {
 	types: string[];
 	promise: ({ client }: any) => any;
 };
 
-export type LoadActions = {
+type LoadActions = {
 	types: string[];
 	promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
 };
@@ -90,7 +90,7 @@ export function loadInfo(): LoadActions {
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
 		promise: () =>
-			postRequestConcatExportASYNC('resolve', true, 550).then((result) => {
+			postRequestConcatExportASYNC('resolve', true, 550, null).then((result: any) => {
 				console.log('>>>>>>>>>>>>>>>> INFO > loadInfo() > THEN > RESULT: ', result);
 				return result;
 			}),

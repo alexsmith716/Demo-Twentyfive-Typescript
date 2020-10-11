@@ -63,11 +63,11 @@ export const NavBar: React.FC = () => {
 
 					<Styles.Collapse>
 						<Styles.NavBarNav clicked={clicked} className={clicked ? 'clicked' : ''}>
-							<li>
+							{/* <li>
 								<Styles.NavBarNavA className="js-scroll-trigger" onClick={doThemeToggleXX}>
 									xxxxxxxxxxxxx
 								</Styles.NavBarNavA>
-							</li>
+							</li> */}
 							<li>
 								<Styles.NavBarNavA className="js-scroll-trigger" onClick={doThemeToggle}>
 									use {themeMode.mode === 'dark' ? `default` : `dark`} theme

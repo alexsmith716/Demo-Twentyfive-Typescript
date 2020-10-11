@@ -22,7 +22,7 @@ export const initialState = {
 	data: null,
 };
 
-export type LoadActions = {
+type LoadActions = {
   types: string[];
   promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
 };
@@ -75,7 +75,7 @@ export function loadInfoAlert(): LoadActions {
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
 		promise: () =>
-			postRequestConcatExportASYNC('resolve', true, 550).then((result) => {
+			postRequestConcatExportASYNC('resolve', true, 550, null).then((result) => {
 				console.log('>>>>>>>>>>>>>>>> INFOALERT > load() > THEN > RESULT: ', result);
 				return result;
 			}),
