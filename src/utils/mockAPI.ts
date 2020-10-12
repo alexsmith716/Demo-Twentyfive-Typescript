@@ -43,7 +43,7 @@ function postRequestRejectPromise(
 
 export type Props = {
 	value: string;
-	time: Date;
+	time: number;
 	delay: number;
 	message: string;
 	status: number;
