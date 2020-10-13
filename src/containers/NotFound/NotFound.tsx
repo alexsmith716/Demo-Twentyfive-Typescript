@@ -3,13 +3,12 @@ import { Helmet } from 'react-helmet-async';
 import styled from 'styled-components';
 
 const NotFoundStyled = styled.div`
-	// background-color: ${props => props.theme.rutgersScarlet};
+	// background-color: ${(props) => props.theme.rutgersScarlet};
 `;
 
 const StyledHeadingOne = styled.h1`
 	color: #000;
 `;
-
 
 const NotFound: React.FC = () => {
 	return (
@@ -25,6 +24,6 @@ const NotFound: React.FC = () => {
 			</div>
 		</NotFoundStyled>
 	);
-}
+};
 
 export default NotFound;

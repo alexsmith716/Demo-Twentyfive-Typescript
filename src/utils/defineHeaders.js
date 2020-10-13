@@ -1,5 +1,5 @@
 import { Headers as ServerHeaders } from 'node-fetch';
- 
+
 //	https://github.com/tc39/proposal-global
 //	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
 //	https://2ality.com/2019/08/global-this.html

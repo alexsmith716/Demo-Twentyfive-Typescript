@@ -23,8 +23,8 @@ export const initialState = {
 };
 
 type LoadActions = {
-  types: string[];
-  promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
+	types: string[];
+	promise: () => Promise<{ time: any; delay: any; message: any; status: any }>;
 };
 
 export const reducer = (state: State = initialState, action: Actions): State => {

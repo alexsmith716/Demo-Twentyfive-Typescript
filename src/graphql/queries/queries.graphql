@@ -1,4 +1,3 @@
-
 query GetCharacter {
 	character @client
 }

@@ -3,7 +3,7 @@ import universal from 'react-universal-component';
 
 // import universalImport from 'babel-plugin-universal-import/universalImport.js'
 // import path from 'path'
-// 
+//
 // const GraphqlPageLoadable = universal(universalImport({
 //   chunkName: () => 'GraphqlPage',
 //   path: () => path.join(__dirname, './GraphqlPage.js'),
@@ -13,6 +13,6 @@ import universal from 'react-universal-component';
 //   ]).then(proms => proms[0])
 // }))
 
-const GraphqlPageLoadable = universal(() => import('./GraphqlPage'))
+const GraphqlPageLoadable = universal(() => import('./GraphqlPage'));
 
 export default GraphqlPageLoadable;

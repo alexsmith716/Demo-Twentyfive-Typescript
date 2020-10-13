@@ -1,22 +1,19 @@
 import { useEffect, useRef } from 'react';
 
 export function useIntervalTS(updatingFunction: any, delay: number, notSure?: any) {
+	const savedCallback = useRef(notSure);
 
-  const savedCallback = useRef(notSure);
+	useEffect(() => {
+		savedCallback.current = updatingFunction;
+	}, [updatingFunction]);
 
-  useEffect(() => {
-    savedCallback.current = updatingFunction;
-  }, [updatingFunction]);
+	useEffect(() => {
+		function tick() {
+			savedCallback.current();
+		}
 
-  useEffect(() => {
+		let id = setInterval(tick, delay);
 
-    function tick() {
-      savedCallback.current();
-    }
-
-    let id = setInterval(tick, delay);
-
-    return () => clearInterval(id);
-
-  }, [delay]);
+		return () => clearInterval(id);
+	}, [delay]);
 }

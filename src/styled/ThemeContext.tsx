@@ -30,12 +30,12 @@ export const ThemeContext: React.FC<Props> = ({ children }) => {
 
 		console.log(
 			'>>>>>>>>>>>>>>>>>>>>>>>> ThemeContext > useEffect() > componentDidUpdate > themeModeState: ',
-			themeModeState
+			themeModeState,
 		);
 
 		return () => {
 			console.log(
-				'>>>>>>>>>>>>>>>>>>>>>>>> ThemeContext > useEffect() > componentWillUnmount > cleanup phase'
+				'>>>>>>>>>>>>>>>>>>>>>>>> ThemeContext > useEffect() > componentWillUnmount > cleanup phase',
 			);
 		};
 	}, [themeModeState]);

@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyleBGTheme = css`
 	background-color: #aa9900;
-`
+`;
 
 export const GlobalStyle = createGlobalStyle`
 	* {
@@ -21,8 +21,8 @@ export const GlobalStyle = createGlobalStyle`
 		font-display: fallback;
 		line-height: 1.5;
 		text-align: left;
-		color: ${props => props.theme.textColor};
-		background-color: ${props => props.theme.backgroundColor};
+		color: ${(props) => props.theme.textColor};
+		background-color: ${(props) => props.theme.backgroundColor};
 	}
 
 	hr {
@@ -493,7 +493,7 @@ export const GlobalStyle = createGlobalStyle`
 		width: 2rem;
 		height: 2rem;
 		vertical-align: text-bottom;
-		border: .25em solid ${props => props.theme.spinnerColor};
+		border: .25em solid ${(props) => props.theme.spinnerColor};
 		border-right-color: transparent;
 		border-radius: 50%;
 		animation: spinner .75s linear infinite;

@@ -83,7 +83,7 @@ module.exports = {
 									return generatedIdent(
 										path.basename(lr).replace(/\.[^/.]+$/, ''),
 										localName,
-										lr
+										lr,
 									);
 								},
 								namedExport: true,
@@ -124,7 +124,7 @@ module.exports = {
 									return generatedIdent(
 										path.basename(lr).replace(/\.[^/.]+$/, ''),
 										localName,
-										lr
+										lr,
 									);
 								},
 								namedExport: true,

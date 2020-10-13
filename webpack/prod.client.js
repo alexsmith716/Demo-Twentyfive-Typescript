@@ -9,7 +9,6 @@ const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
 const rootPath = path.resolve(__dirname, '../');
-const buildPath = path.resolve(rootPath, './build');
 const assetPath = path.resolve(rootPath, './build/dist');
 
 const generatedIdent = (name, localName, lr) => {
@@ -25,9 +24,7 @@ module.exports = {
 	mode: 'production',
 
 	entry: {
-		main: [
-			'./src/client.js',
-		],
+		main: ['./src/client.js'],
 	},
 
 	output: {
@@ -53,7 +50,7 @@ module.exports = {
 			},
 
 			// ====================================================================================
-			
+
 			{
 				test: /\.(ts|js)x?$/,
 				exclude: /node_modules/,
@@ -93,7 +90,7 @@ module.exports = {
 									return generatedIdent(
 										path.basename(lr).replace(/\.[^/.]+$/, ''),
 										localName,
-										lr
+										lr,
 									);
 								},
 							},
@@ -139,7 +136,7 @@ module.exports = {
 									return generatedIdent(
 										path.basename(lr).replace(/\.[^/.]+$/, ''),
 										localName,
-										lr
+										lr,
 									);
 								},
 							},
@@ -218,9 +215,7 @@ module.exports = {
 		new ForkTsCheckerWebpackPlugin(),
 
 		new CopyPlugin({
-			patterns: [
-				{ from: '../**', to: './build/dist', context: './src/build' },
-			],
+			patterns: [{ from: '../**', to: './build/dist', context: './src/build' }],
 		}),
 
 		new ExtractCssChunks({

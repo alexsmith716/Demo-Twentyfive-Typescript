@@ -4,24 +4,25 @@ import config from '../../config/config';
 // axios returns a JSON response
 
 export default async function axiosClient(request) {
-  console.log('>>>>>>>>>>>>>>>> axiosClient(request) <<<<<<<<<<<<<<<<<<<<<<');
-  const data = await axios.get(request)
-    .then(response => {
-      console.log('>>>>>>>>>>>>>>>> axiosClient.then(response) <<<<<<<<<<<<<<<<<<<<<<');
-      return {error: null, isLoading: null, response: response};
-    })
-    .catch(error => {
-      console.log('>>>>>>>>>>>>>>>> axiosClient.catch(error) <<<<<<<<<<<<<<<<<<<<<<');
-      return {error: true, isLoading: false, response: error};
-    });
-  return data;
-};
+	console.log('>>>>>>>>>>>>>>>> axiosClient(request) <<<<<<<<<<<<<<<<<<<<<<');
+	const data = await axios
+		.get(request)
+		.then((response) => {
+			console.log('>>>>>>>>>>>>>>>> axiosClient.then(response) <<<<<<<<<<<<<<<<<<<<<<');
+			return { error: null, isLoading: null, response: response };
+		})
+		.catch((error) => {
+			console.log('>>>>>>>>>>>>>>>> axiosClient.catch(error) <<<<<<<<<<<<<<<<<<<<<<');
+			return { error: true, isLoading: false, response: error };
+		});
+	return data;
+}
 
 // export default async function axiosClient(request) {
 //   try {
 //     const response = await axios.get(request);
 //     return {error: null, isLoading: null, response: response};
-// 
+//
 //   } catch (error) {
 //     return {error: true, isLoading: false, response: error};
 //   }
@@ -37,5 +38,5 @@ export default async function axiosClient(request) {
 //     this.setState({...this.state, isFetching: false});
 //   }
 // };
-// 
+//
 // fetchUsers = this.fetchUsersAsync;

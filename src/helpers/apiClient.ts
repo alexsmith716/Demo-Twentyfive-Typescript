@@ -12,12 +12,12 @@ export const apiClient = (): AxiosInstance => {
 
 			return conf;
 		},
-		(error) => Promise.reject(error)
+		(error) => Promise.reject(error),
 	);
 
 	instance.interceptors.response.use(
 		(response) => response.data,
-		(error) => Promise.reject(error.response ? error.response.data : error)
+		(error) => Promise.reject(error.response ? error.response.data : error),
 	);
 
 	// console.log('>>>> apiClient > INSTANCE: ', instance);
