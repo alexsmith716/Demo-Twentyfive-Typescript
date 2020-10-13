@@ -9,7 +9,7 @@ export const colors = {
 	graySeven: '#495057',
 	grayEight: '#343a40',
 	grayNine: '#212529',
-  grayTwentyfour: '#3D3D3D',
+	grayTwentyfour: '#3D3D3D',
 	black: '#000000',
 	lightskyblue: '#b0e2ff',
 	lavender: '#e6e6fa',
@@ -40,5 +40,5 @@ export const colors = {
 	dodgerblue: '#104e8b',
 	darkorange: '#cd6600',
 	mediumblue: '#0000cd',
-  carrot: '#ed9121',
+	carrot: '#ed9121',
 };

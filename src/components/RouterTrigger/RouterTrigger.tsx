@@ -31,8 +31,8 @@ export const RouterTrigger: React.FC<Props> = ({ triggerProp, children }) => {
 				.catch((error: Error) =>
 					console.log(
 						'>>>>>>>>>>>>>>>>>>>>>>>> RouterTrigger useEffect() > triggerProp > ERROR:',
-						error
-					)
+						error,
+					),
 				)
 				.then(() => {
 					// for next route, preset "new" location as "previous" location (will reflect a change)
@@ -42,7 +42,7 @@ export const RouterTrigger: React.FC<Props> = ({ triggerProp, children }) => {
 
 		return () => {
 			console.log(
-				'>>>>>>>>>>>>>>>>>>>>>>>> RouterTrigger useEffect() > componentWillUnmount > cleanup phase'
+				'>>>>>>>>>>>>>>>>>>>>>>>> RouterTrigger useEffect() > componentWillUnmount > cleanup phase',
 			);
 		};
 	}, [needTrigger, location.pathname, locationState, triggerProp]);

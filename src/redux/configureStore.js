@@ -37,7 +37,6 @@ function getNoOperationReducers(reducers, array) {
 // ----------------------------------------------------------------------
 
 export default function configureStore({ data, helpers, persistConfig }) {
-
 	const middleware = [clientMiddleware(helpers)];
 
 	// ----------------------------------------------------------------------

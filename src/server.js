@@ -8,7 +8,7 @@ import { flushChunkNames } from 'react-universal-component/server';
 import flushChunks from 'webpack-flush-chunks';
 import { HelmetProvider } from 'react-helmet-async';
 import fetch from 'node-fetch';
-import { ServerStyleSheet, ThemeProvider } from 'styled-components';
+import { ServerStyleSheet } from 'styled-components';
 
 import { GetReviews, GetADroid, GetCharacter } from './graphql/queries/queries.graphql';
 import * as graphqlQueries from './graphql/queries/queries.js';
@@ -60,7 +60,7 @@ const customFetch = (uri, options) => {
 		},
 		(error) => {
 			console.log('>>>> SERVER > customFetch > ERROR: ', error);
-		}
+		},
 	);
 };
 
@@ -102,13 +102,11 @@ export default ({ clientStats }) => async (req, res) => {
 
 	const store = configureStore({
 		history,
-		data: { ...preloadedState, },
+		data: { ...preloadedState },
 		helpers: providers,
 	});
 
-	store.subscribe(() =>
-		console.log('>>>> SERVER > configureStore > store.getState(): ', store.getState())
-	);
+	store.subscribe(() => console.log('>>>> SERVER > configureStore > store.getState(): ', store.getState()));
 
 	// =====================================================
 
@@ -151,8 +149,8 @@ export default ({ clientStats }) => async (req, res) => {
 		if (graphQLErrors) {
 			graphQLErrors.map(({ message, locations, path }) =>
 				console.log(
-					`>>>> SERVER > [GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-				)
+					`>>>> SERVER > [GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+				),
 			);
 		}
 
@@ -191,7 +189,6 @@ export default ({ clientStats }) => async (req, res) => {
 	await asyncGetPromises(routes, req.path, store);
 
 	try {
-
 		console.log('>>>> SERVER > InMemoryCache > CACHE > cache.extract() 1: ', cache.extract());
 
 		// ==========================================================================
@@ -363,10 +360,16 @@ export default ({ clientStats }) => async (req, res) => {
 		//  const styledComponents = sheet.getStyleTags();  // returns a string of multiple `<style>` tags
 		const styledComponents = sheet.getStyleElement(); // returns an array of React elements > ReactDOM.renderToString(sC)
 
-		console.log('>>>> SERVER > InMemoryCache > CACHE >>>>>>>>>>>>>>>>>>>: ', cache);
+		console.log('>>>> SERVER > styledComponents >>>>>>>>>>>>>>>>>>>: ', styledComponents);
 
 		const html = (
-			<Html assets={assets} styledComponents={styledComponents} content={content} store={store} graphqlState={graphqlState} />
+			<Html
+				assets={assets}
+				styledComponents={styledComponents}
+				content={content}
+				store={store}
+				graphqlState={graphqlState}
+			/>
 		);
 
 		const ssrHtml = `<!DOCTYPE html><html lang="en">${ReactDOM.renderToString(html)}</html>`;

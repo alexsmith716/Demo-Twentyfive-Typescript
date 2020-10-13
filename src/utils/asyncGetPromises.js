@@ -1,9 +1,9 @@
 import { matchRoutes } from 'react-router-config';
 
 function getPromises(match, store) {
-	const arrayHere = match.map(q => q.route.loadData).filter(r => r !== undefined);
-	console.log('##################### asyncGetPromises > getPromises() > array: ', arrayHere)
-	return arrayHere.map(a => a(store));
+	const arrayHere = match.map((q) => q.route.loadData).filter((r) => r !== undefined);
+	console.log('##################### asyncGetPromises > getPromises() > array: ', arrayHere);
+	return arrayHere.map((a) => a(store));
 }
 
 async function asyncGetPromises(routes, pathname, store) {

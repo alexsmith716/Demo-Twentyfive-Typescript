@@ -5,7 +5,7 @@ export default function clientMiddleware(helpers: any): Middleware {
 		if (typeof action === 'function') {
 			console.log(
 				'>>>>>>>>>> clientMiddleware <<<<<<<<<<<<<<<<< > RETURNING typeof action === function: ',
-				typeof action
+				typeof action,
 			);
 			return action(dispatch, getState);
 		}
@@ -35,7 +35,7 @@ export default function clientMiddleware(helpers: any): Middleware {
 		actionPromise
 			.then(
 				(result) => next({ ...rest, result, type: SUCCESS }),
-				(error) => next({ ...rest, error, type: FAILURE })
+				(error) => next({ ...rest, error, type: FAILURE }),
 			)
 			.catch((error) => {
 				console.error('MIDDLEWARE ERROR:', error);

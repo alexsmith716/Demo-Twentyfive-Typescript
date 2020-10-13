@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { toggleTheme } from '../../redux/modules/theme';
+//  import { useSelector, useDispatch } from 'react-redux';
+//  import { toggleTheme } from '../../redux/modules/theme';
 import { State as ThemeState } from '../../redux/modules/theme';
 
 import { useLocation } from 'react-router-dom';
@@ -14,8 +14,8 @@ export type State = {
 };
 
 export const NavBar: React.FC = () => {
-	const dispatch = useDispatch();
-	const toggledTheme = useSelector((state: State) => state.theme.mode);
+	// const dispatch = useDispatch();
+	// const toggledTheme = useSelector((state: State) => state.theme.mode);
 
 	const themeMode = useTheme();
 	const location = useLocation();
@@ -28,7 +28,7 @@ export const NavBar: React.FC = () => {
 
 		return () => {
 			console.log(
-				'>>>>>>>>>>>>>>>>>>>>>>>> NavBar > useEffect() > componentWillUnmount > cleanup phase'
+				'>>>>>>>>>>>>>>>>>>>>>>>> NavBar > useEffect() > componentWillUnmount > cleanup phase',
 			);
 		};
 	}, [location.pathname]);
@@ -38,10 +38,10 @@ export const NavBar: React.FC = () => {
 		setClicked(false);
 	};
 
-	const doThemeToggleXX = () => {
-		dispatch(toggleTheme(toggledTheme));
-		setClicked(false);
-	};
+	//  const doThemeToggleXX = () => {
+	//  	dispatch(toggleTheme(toggledTheme));
+	//  	setClicked(false);
+	//  };
 
 	return (
 		<Styles.NavBar className="navbar">

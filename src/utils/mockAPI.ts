@@ -2,7 +2,7 @@ function postRequestRejectPromise(
 	resolveReject: string,
 	requestFound: boolean,
 	delay: number,
-	req: any
+	req: any,
 ): Promise<any> {
 	const promise = new Promise((resolve, reject) => {
 		setTimeout(() => {
@@ -53,7 +53,7 @@ export function postRequestConcatExportASYNC(
 	resolveReject: string,
 	requestFound: boolean,
 	delay: number,
-	req: any
+	req: any,
 ): Promise<any> {
 	resolveReject === 'reject' ? (delay = 0) : null;
 
@@ -72,7 +72,7 @@ export function postRequestConcatExportASYNC(
 		.then((result) => {
 			console.log(
 				'###### mockAPI > postRequestConcatExportASYNC > AFTER CATCH > PROMISE.THEN2:',
-				result
+				result,
 			);
 
 			const message = result.value === 'reject' ? 'RESOLVED! 404 - Data Not Found.' : result.message;
