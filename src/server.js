@@ -10,8 +10,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import fetch from 'node-fetch';
 import { ServerStyleSheet } from 'styled-components';
 
-import { GetReviews, GetADroid, GetCharacter } from './graphql/queries/queries.graphql';
-import * as graphqlQueries from './graphql/queries/queries.js';
+// import { GetReviews, GetADroid, GetCharacter } from './graphql/queries/queries.graphql';
+// import * as graphqlQueries from './graphql/queries/queries.js';
 import { resolvers } from './graphql/resolvers/resolvers.js';
 
 import asyncGetPromises from './utils/asyncGetPromises';
@@ -29,9 +29,10 @@ import defineHeaders from './utils/defineHeaders';
 import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache, ApolloLink, gql } from '@apollo/client';
 
 import { onError } from '@apollo/client/link/error';
-import { getDataFromTree, getMarkupFromTree } from '@apollo/client/react/ssr';
+import { getDataFromTree } from '@apollo/client/react/ssr';
+import ServerProps from './ServerProps';
 
-//  provide for client ("to avoid network calls and mocking data"):
+//  provide for client ("to avoid network calls and mocking data")
 //  https://github.com/apollographql/apollo-client/blob/master/docs/source/api/link/apollo-link-schema.md
 //  https://graphql.org/graphql-js/graphql/#entry-point
 
@@ -43,45 +44,45 @@ import { getDataFromTree, getMarkupFromTree } from '@apollo/client/react/ssr';
 
 // -------------------------------------------------------------------
 
-const customFetch = (uri, options) => {
-	console.log('>>>> SERVER > customFetch > uri: ', uri);
-	console.log('>>>> SERVER > customFetch > options: ', options);
-	console.log('>>>> SERVER > customFetch > typeof options.body: ', typeof options.body);
-	console.log('>>>> SERVER > customFetch > options.body: ', options.body);
-	const pending = fetch(uri, {
-		method: options.method,
-		body: options.body,
-		headers: options.headers,
-	});
-	return pending.then(
-		(response) => {
-			console.log('>>>> SERVER > customFetch > response: ', response);
-			return response;
-		},
-		(error) => {
-			console.log('>>>> SERVER > customFetch > ERROR: ', error);
-		},
-	);
-};
+//  const customFetch = (uri, options) => {
+//    console.log('>>>> SERVER > customFetch > uri: ', uri);
+//    console.log('>>>> SERVER > customFetch > options: ', options);
+//    console.log('>>>> SERVER > customFetch > typeof options.body: ', typeof options.body);
+//    console.log('>>>> SERVER > customFetch > options.body: ', options.body);
+//    const pending = fetch(uri, {
+//      method: options.method,
+//      body: options.body,
+//      headers: options.headers,
+//    });
+//    return pending.then(
+//      (response) => {
+//        console.log('>>>> SERVER > customFetch > response: ', response);
+//        return response;
+//      },
+//      (error) => {
+//        console.log('>>>> SERVER > customFetch > ERROR: ', error);
+//      },
+//    );
+//  };
 
-const customFetchAsync = async (uri, options) => {
-	console.log('>>>> SERVER > customFetchAsync > uri: ', uri);
-	console.log('>>>> SERVER > customFetchAsync > options: ', options);
-	console.log('>>>> SERVER > customFetchAsync > typeof options.body: ', typeof options.body);
-	console.log('>>>> SERVER > customFetchAsync > options.body: ', options.body);
-	// const headersX = options.headers.entries().reduce((accumulator, h) => { accumulator[h[0]] = h[1];  return accumulator;}, {})
-	const response = await fetch(uri, {
-		method: options.method,
-		body: options.body,
-		headers: options.headers,
-	});
-	try {
-		console.log('>>>> SERVER > customFetchAsync > response: ', response);
-		return response;
-	} catch (error) {
-		console.log('>>>> SERVER > customFetchAsync > ERROR: ', error);
-	}
-};
+//  const customFetchAsync = async (uri, options) => {
+//    console.log('>>>> SERVER > customFetchAsync > uri: ', uri);
+//    console.log('>>>> SERVER > customFetchAsync > options: ', options);
+//    console.log('>>>> SERVER > customFetchAsync > typeof options.body: ', typeof options.body);
+//    console.log('>>>> SERVER > customFetchAsync > options.body: ', options.body);
+//    // const headersX = options.headers.entries().reduce((accumulator, h) => { accumulator[h[0]] = h[1];  return accumulator;}, {})
+//    const response = await fetch(uri, {
+//      method: options.method,
+//      body: options.body,
+//      headers: options.headers,
+//    });
+//    try {
+//      console.log('>>>> SERVER > customFetchAsync > response: ', response);
+//      return response;
+//    } catch (error) {
+//      console.log('>>>> SERVER > customFetchAsync > ERROR: ', error);
+//    }
+//  };
 
 /* eslint-disable consistent-return */
 
@@ -145,8 +146,9 @@ export default ({ clientStats }) => async (req, res) => {
 
 	const cache = new InMemoryCache();
 
-	const errorLink = onError(({ graphQLErrors, networkError, operation, forward }) => {
-		if (graphQLErrors) {
+	const errorLink = onError(({ graphQLErrors, networkError }) => {
+		if (graphQLErrors && graphQLErrors?.length > 0) {
+			//  catchError((e) => handleError(e))
 			graphQLErrors.map(({ message, locations, path }) =>
 				console.log(
 					`>>>> SERVER > [GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
@@ -157,7 +159,7 @@ export default ({ clientStats }) => async (req, res) => {
 		// https://hasura.io/blog/handling-graphql-hasura-errors-with-react/
 		// https://github.com/apollographql/apollo-link/tree/master/packages/apollo-link-error#retrying-failed-requests
 		if (networkError) {
-			console.log(`>>>> SERVER > [Network error1111]: ${networkError}`);
+			console.log(`>>>> SERVER > [Network error!!!!!]: ${networkError}`);
 		}
 	});
 
@@ -268,7 +270,7 @@ export default ({ clientStats }) => async (req, res) => {
 				}
 			`,
 			data: {
-				cartItems: [],
+				cartItems: ['itemAA', 'itemBB', 'itemCC'],
 			},
 		});
 
@@ -355,7 +357,8 @@ export default ({ clientStats }) => async (req, res) => {
 			return res.redirect(301, location.pathname);
 		}
 
-		const graphqlState = clientApollo.extract();
+		const storeState = JSON.stringify(store.getState());
+		const graphqlState = JSON.stringify(clientApollo.extract());
 
 		//  const styledComponents = sheet.getStyleTags();  // returns a string of multiple `<style>` tags
 		const styledComponents = sheet.getStyleElement(); // returns an array of React elements > ReactDOM.renderToString(sC)
@@ -365,9 +368,9 @@ export default ({ clientStats }) => async (req, res) => {
 		const html = (
 			<Html
 				assets={assets}
-				styledComponents={styledComponents}
 				content={content}
-				store={store}
+				store={storeState}
+				styledComponents={styledComponents}
 				graphqlState={graphqlState}
 			/>
 		);

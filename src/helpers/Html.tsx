@@ -1,29 +1,19 @@
 import React from 'react';
-import { Store } from 'redux';
-import { ServerStyleSheet } from 'styled-components';
-import serialize from 'serialize-javascript';
 import config from '../../config/config';
 
-export type Props = {
+type Props = {
 	assets: {
 		scripts: string[];
 		stylesheets: string[];
 		publicPath: string;
 	};
-	store: Store;
 	content: string;
-	styledComponents: Array<React.ReactElement<{}>>;
-	graphqlState: number; // <<<<<<<<<<<<<<<<< NUMBER WORKING ?????????????? fully typed
+	store: string;
+	styledComponents: React.ReactElement[];
+	graphqlState: string;
 };
 
-//	{
-//	  ROOT_QUERY: [Object: null prototype] { __typename: 'Query', cartItems: [] }
-//	}
-
-const Html: React.FC<Props> = ({ assets, store, content, styledComponents, graphqlState }) => {
-	console.log('KHHHSHDHSHHSHSHSHSHhhhhhshshshhshshshsshshshsh????????00000: ', typeof graphqlState)
-	console.log('KHHHSHDHSHHSHSHSHSHhhhhhshshshhshshshsshshshsh????????101010: ', graphqlState)
-
+const Html: React.FC<Props> = ({ assets, content, store, styledComponents, graphqlState }) => {
 	return (
 		<html lang="en-US">
 			<head>
@@ -67,9 +57,7 @@ const Html: React.FC<Props> = ({ assets, store, content, styledComponents, graph
 				{store && (
 					<script
 						dangerouslySetInnerHTML={{
-							__html: `window.__PRELOADED__=true;window.REDUX_DATA=${serialize(
-								store.getState(),
-							)};`,
+							__html: `window.__PRELOADED__=true;window.REDUX_DATA=${store};`,
 						}}
 						charSet="UTF-8"
 					/>
@@ -79,7 +67,7 @@ const Html: React.FC<Props> = ({ assets, store, content, styledComponents, graph
 				{graphqlState && (
 					<script
 						dangerouslySetInnerHTML={{
-							__html: `window.__APOLLO_STATE__=${serialize(graphqlState)};`,
+							__html: `window.__APOLLO_STATE__=${graphqlState};`,
 						}}
 						charSet="UTF-8"
 					/>

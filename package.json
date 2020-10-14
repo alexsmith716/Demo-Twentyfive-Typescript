@@ -22,6 +22,7 @@
 		"lint:clientMiddleware": "eslint ./src/redux/clientMiddleware.ts",
 		"lint:apiClient": "eslint src/helpers/apiClient.ts",
 		"lint:html": "eslint src/helpers/Html.tsx",
+		"lint:server": "eslint src/server.js",
 		"lint:webpack": "eslint src/",
 		"format": "prettier --config .prettierrc --write src/"
 	},
@@ -82,8 +83,8 @@
 		"@types/react-router-dom": "^5.1.6",
 		"@types/serialize-javascript": "^4.0.0",
 		"@types/styled-components": "^5.1.4",
-		"@typescript-eslint/eslint-plugin": "^4.4.0",
-		"@typescript-eslint/parser": "^4.4.0",
+		"@typescript-eslint/eslint-plugin": "^4.4.1",
+		"@typescript-eslint/parser": "^4.4.1",
 		"babel-jest": "^26.5.2",
 		"babel-loader": "^8.1.0",
 		"babel-plugin-styled-components": "^1.11.1",
