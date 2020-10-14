@@ -30,7 +30,6 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache, ApolloLink
 
 import { onError } from '@apollo/client/link/error';
 import { getDataFromTree } from '@apollo/client/react/ssr';
-import ServerProps from './ServerProps';
 
 //  provide for client ("to avoid network calls and mocking data")
 //  https://github.com/apollographql/apollo-client/blob/master/docs/source/api/link/apollo-link-schema.md

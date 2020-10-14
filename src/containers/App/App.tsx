@@ -12,7 +12,7 @@ export type AppProps = {
 	};
 };
 
-export const App = ({ route }: AppProps) => {
+export const App: React.FC<AppProps> = ({ route }) => {
 	return (
 		<>
 			{/* ------------- Navbar ------------- */}
