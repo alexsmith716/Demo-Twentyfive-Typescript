@@ -43,8 +43,8 @@ module.exports = {
 			parser: '@babel/eslint-parser',
 			rules: {
 				'no-unused-vars': 0,
-				'react-hooks/rules-of-hooks': 'error',
-				'react-hooks/exhaustive-deps': 'warn'
+				'react-hooks/rules-of-hooks': 2,
+				'react-hooks/exhaustive-deps': 1
 			}
 		},
 		{
@@ -64,14 +64,14 @@ module.exports = {
 			],
 			parser: '@typescript-eslint/parser',
 			rules: {
-				'@typescript-eslint/no-empty-function': 0,
-				'@typescript-eslint/no-use-before-define': 0,
-				'@typescript-eslint/explicit-function-return-type': 0,
-				'@typescript-eslint/no-explicit-any': 0,
-				'react/display-name': 0,
+				'@typescript-eslint/no-empty-function': 2,
+				'@typescript-eslint/no-use-before-define': 2,
+				'@typescript-eslint/explicit-function-return-type': 2,
+				'@typescript-eslint/no-explicit-any': 2,
+				'react/display-name': 2,
 				'react/prop-types': 0,
-				'react-hooks/rules-of-hooks': 'error',
-				'react-hooks/exhaustive-deps': 'warn'
+				'react-hooks/rules-of-hooks': 2,
+				'react-hooks/exhaustive-deps': 1
 			}
 		}
 	]
