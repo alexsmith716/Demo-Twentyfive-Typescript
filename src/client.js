@@ -13,8 +13,6 @@ import { ApolloProvider, ApolloClient, createHttpLink, InMemoryCache, ApolloLink
 
 import { onError } from '@apollo/client/link/error';
 
-import { ThemeProvider } from 'styled-components';
-
 import defineHeaders from './utils/defineHeaders';
 
 import { Provider } from 'react-redux';

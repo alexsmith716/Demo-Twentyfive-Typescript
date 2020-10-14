@@ -15,7 +15,7 @@ export type RootProps = {
 	};
 };
 
-export const Root = ({ route }: RootProps) => {
+export const Root: React.FC<RootProps> = ({ route }: RootProps) => {
 	const themeMode = useTheme();
 	const themeModeMode = AppTheme.theme[`${themeMode.mode}`];
 
