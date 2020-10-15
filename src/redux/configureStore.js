@@ -3,7 +3,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { createPersistoid, persistCombineReducers, REGISTER } from 'redux-persist';
 
 import clientMiddleware from './clientMiddleware';
-import rootReducer from './reducer';
+import { rootReducer } from './reducer';
 
 // ----------------------------------------------------------------------
 

@@ -4,7 +4,7 @@ import { reducer as infoAlert, State as InfoAlertState } from './modules/infoAle
 import { reducer as infoAlertThree, State as InfoAlertThreeState } from './modules/infoAlertThree';
 import { reducer as theme, State as ThemeState } from './modules/theme';
 
-type Props = {
+export type Props = {
 	online: boolean;
 	device: DeviceState;
 	info: InfoState;
@@ -13,7 +13,7 @@ type Props = {
 	theme: ThemeState;
 };
 
-export default function rootReducer(): Props {
+export function rootReducer(): Props {
 	return {
 		online: (v = true) => v,
 		device,
