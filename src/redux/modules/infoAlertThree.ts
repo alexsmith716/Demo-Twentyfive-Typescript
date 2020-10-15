@@ -75,7 +75,7 @@ export function loadInfoAlertThree(): LoadActions {
 	return {
 		types: [LOAD, LOAD_SUCCESS, LOAD_FAIL],
 		promise: () =>
-			postRequestConcatExportASYNC('resolve', true, 550, null).then((result) => {
+			postRequestConcatExportASYNC('resolve', true, 3550, null).then((result) => {
 				console.log('>>>>>>>>>>>>>>>> INFOALERTTHREE > load() > THEN > RESULT: ', result);
 				return result;
 			}),

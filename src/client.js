@@ -19,7 +19,7 @@ import { Provider } from 'react-redux';
 import asyncGetPromises from './utils/asyncGetPromises';
 
 import { RouterTrigger } from './components/RouterTrigger/RouterTrigger';
-import ScrollToTop from './components/ScrollToTop';
+//	import ScrollToTop from './components/ScrollToTop';
 
 import routes from './routes';
 import { apiClient } from './helpers/apiClient';
@@ -45,7 +45,6 @@ const persistConfig = {
 
 const spinnerContainer = document.createElement('div');
 spinnerContainer.classList.add('spinner-progress');
-//  // spinnerContainer.className = 'spinner-progress';
 const dest = document.getElementById('react-root');
 document.body.insertBefore(spinnerContainer, dest);
 
@@ -110,22 +109,14 @@ const providers = {
 	//  });
 
 	const triggerHooks = async (hydrateRoutes, pathname) => {
-		// console.log('>>>> CLIENT > triggerHooks > store.getState() 1111 ######: ', store.getState());
 		spinnerContainer.classList.add('spinner');
 
-		// Don't fetch data for initial route, server has already done the work:
 		if (window.__PRELOADED__) {
-			// Delete initial data so that subsequent data fetches can occur:
-			console.log('>>>> CLIENT > triggerHooks > window.__PRELOADED__ YES: ', window.__PRELOADED__);
 			delete window.__PRELOADED__;
 		} else {
-			// Fetch mandatory data dependencies for 2nd route change onwards:
-			console.log('>>>> CLIENT > triggerHooks > window.__PRELOADED__ NO > await asyncGetPromises()');
 			await asyncGetPromises(hydrateRoutes, pathname, store);
 		}
-
 		spinnerContainer.classList.remove('spinner');
-		// console.log('>>>> CLIENT > triggerHooks > store.getState() 2222 ######: ', store.getState());
 	};
 
 	const hydrate = (hydrateRoutes) => {
@@ -134,7 +125,6 @@ const providers = {
 				<Provider store={store}>
 					<Router history={history}>
 						<ThemeContext>
-							<ScrollToTop />
 							<RouterTrigger triggerProp={(pathname) => triggerHooks(hydrateRoutes, pathname)}>
 								{renderRoutes(hydrateRoutes)}
 							</RouterTrigger>
