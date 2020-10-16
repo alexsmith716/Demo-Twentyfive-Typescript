@@ -14,16 +14,6 @@
 		"check-types": "tsc --noEmit true",
 		"lint:styles": "stylelint src/components/**/*.{css,scss,js,tsx}",
 		"lint:js": "eslint src/components/**/*.{js,ts,tsx}",
-		"lint:preloadData": "eslint src/containers/About/preloadData.ts",
-		"lint:LinkTest": "eslint src/components/jestTest/LinkTest.tsx",
-		"lint:mockAPI": "eslint src/utils/mockAPI.ts",
-		"lint:info": "eslint src/redux/modules/info.ts",
-		"lint:theme": "eslint src/redux/modules/theme.ts",
-		"lint:clientMiddleware": "eslint src/redux/clientMiddleware.ts",
-		"lint:apiClient": "eslint src/helpers/apiClient.ts",
-		"lint:html": "eslint src/helpers/Html.tsx",
-		"lint:server": "eslint src/server.js",
-		"lint:webpack": "eslint src/",
 		"format": "prettier --config .prettierrc --write src/"
 	},
 	"dependencies": {

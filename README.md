@@ -13,4 +13,7 @@ TypeScript-Website-2/packages/documentation/copy/en/handbook-v2/Object Types.md
 
 ### TODO:
 
-how are we handling theme state again?
+* deploy to Heroku
+* type the Theme
+* add GraphQL & REST examples
+* upgrade to webpack v5

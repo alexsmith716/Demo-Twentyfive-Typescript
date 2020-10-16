@@ -110,7 +110,6 @@ const providers = {
 
 	const triggerHooks = async (hydrateRoutes, pathname) => {
 		spinnerContainer.classList.add('spinner');
-
 		if (window.__PRELOADED__) {
 			delete window.__PRELOADED__;
 		} else {
