@@ -61,7 +61,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname, '..', 'build')));
+app.use(express.static(path.join(__dirname, '..', 'dist')));
 
 app.use((req, res, next) => {
   req.userAgent = getUserAgent(req.headers['user-agent']);
@@ -130,7 +130,7 @@ webpack([clientConfigProd, serverConfigProd]).run((err, stats) => {
   }
 
   // eslint-disable-next-line import/no-unresolved
-  const serverRender = require('../build/server/server.js').default;
+  const serverRender = require('../build/server.js').default;
 
   app.use(serverRender({ clientStats }));
 

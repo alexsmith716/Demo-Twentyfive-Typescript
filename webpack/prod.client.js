@@ -1,15 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
-// const CssnanoPlugin = require('cssnano-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ExtractCssChunks = require('extract-css-chunks-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
-// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
 const rootPath = path.resolve(__dirname, '../');
-const assetPath = path.resolve(rootPath, './build/dist');
+const publicPath = path.resolve(rootPath, './public');
+const assetPath = path.resolve(rootPath, './dist');
 
 const generatedIdent = (name, localName, lr) => {
 	const b = Buffer.from(lr).toString('base64');
@@ -31,7 +30,7 @@ module.exports = {
 		filename: '[name].[chunkhash].js',
 		chunkFilename: '[name].[chunkhash].js',
 		path: assetPath,
-		publicPath: '/dist/',
+		publicPath: '/',
 	},
 
 	module: {
@@ -58,8 +57,6 @@ module.exports = {
 				options: {
 					babelrc: false,
 					configFile: path.resolve(rootPath, 'babel.config.js'),
-					// cacheDirectory: true,
-					// cacheCompression: false,
 				},
 			},
 
@@ -102,12 +99,6 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: false,
-							config: {
-								path: 'postcss.config.js',
-							},
-						},
 					},
 				],
 			},
@@ -148,12 +139,6 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: false,
-							config: {
-								path: 'postcss.config.js',
-							},
-						},
 					},
 					{
 						loader: 'sass-loader',
@@ -188,7 +173,6 @@ module.exports = {
 	},
 
 	optimization: {
-		// minimizer: [new CssnanoPlugin()],
 		minimize: true,
 		splitChunks: {
 			cacheGroups: {
@@ -215,7 +199,7 @@ module.exports = {
 		new ForkTsCheckerWebpackPlugin(),
 
 		new CopyPlugin({
-			patterns: [{ from: '../**', to: './build/dist', context: './src/build' }],
+			patterns: [{ from: './**', to: assetPath, context: './public' }],
 		}),
 
 		new ExtractCssChunks({
