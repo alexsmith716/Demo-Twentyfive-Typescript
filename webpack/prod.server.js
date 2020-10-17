@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-// const CssnanoPlugin = require('cssnano-webpack-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const WebpackBar = require('webpackbar');
@@ -27,8 +26,7 @@ module.exports = {
 	},
 
 	output: {
-		path: path.resolve('./build/server'),
-		// filename: 'server.js',
+		path: path.resolve('./build'),
 		filename: '[name].js',
 		libraryTarget: 'commonjs2',
 	},
@@ -57,8 +55,6 @@ module.exports = {
 				options: {
 					babelrc: false,
 					configFile: path.resolve(rootPath, 'babel.config.js'),
-					// cacheDirectory: true,
-					// cacheCompression: false,
 				},
 			},
 
@@ -96,12 +92,6 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: false,
-							config: {
-								path: 'postcss.config.js',
-							},
-						},
 					},
 				],
 			},
@@ -137,12 +127,6 @@ module.exports = {
 					},
 					{
 						loader: 'postcss-loader',
-						options: {
-							sourceMap: false,
-							config: {
-								path: 'postcss.config.js',
-							},
-						},
 					},
 					{
 						loader: 'sass-loader',
@@ -189,7 +173,6 @@ module.exports = {
 		new ForkTsCheckerWebpackPlugin(),
 
 		new webpack.optimize.ModuleConcatenationPlugin(),
-
 		new webpack.optimize.OccurrenceOrderPlugin(),
 
 		new webpack.optimize.LimitChunkCountPlugin({
